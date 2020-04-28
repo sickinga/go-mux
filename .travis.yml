@@ -17,6 +17,6 @@ script:
   - echo "$REGISTRY_PASSWORD" | docker login --username $REGISTRY_USER --password-stdin
   - docker build -f Dockerfile -t mrckurz/ms_demo:latest ./
   - GIT_SHA="$(git rev-parse --short HEAD)"
-  - docker tag mrckurz/ms_demo:latest mrckurz/demo:$GIT_SHA
+  - docker tag mrckurz/ms_demo:latest mrckurz/ms_demo:$GIT_SHA
   - docker push mrckurz/ms_demo:latest
   - docker push mrckurz/ms_demo:$GIT_SHA
