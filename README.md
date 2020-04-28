@@ -4,7 +4,7 @@
 
 ## Prerequisites:
 1. [GitHub Account](https://github.com)
-2. PostgreSql installed and configured([see Tutorial](https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb))
+2. PostgreSql installed and configured ([see Tutorial](https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb))
   * make sure user/role 'postgres' is available
   * environment variables properly set
      * export APP\_DB_USERNAME=postgres
