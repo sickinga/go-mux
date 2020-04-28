@@ -11,3 +11,7 @@
 	  * export APP\_DB_PASSWORD=\<whatever password you use>
 	 * export APP\_DB_NAME=postgres
 3. GoLang installed (see [golang.org](https://golang.org))
+
+
+### Hints/Info
+- When you run go test it compiles all the files ending in _test.go into a test binary and then runs that binary to execute the tests. Since the go test binary is simply a compiled go program, it can process command line arguments like any other program 
