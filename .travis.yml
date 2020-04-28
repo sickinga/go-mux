@@ -1,5 +1,5 @@
 os: linux
-  
+
 language: go
 
 go:
@@ -7,9 +7,16 @@ go:
 
 services:
   - postgresql
+  - docker
 
-script:   
+script:
   # Test the code
   - go test -v ./...
-  # Build the code 
-  - CGO_ENABLED=0 GOARCH=amd64 go build -o demo
+  # Build the code
+  - CGO_ENABLED=0 GOARCH=amd64 go build -o ms_demo
+  - echo "$REGISTRY_PASSWORD" | docker login --username $REGISTRY_USER --password-stdin
+  - docker build -f Dockerfile -t mrckurz/ms_demo:latest ./
+  - GIT_SHA="$(git rev-parse --short HEAD)"
+  - docker tag mrckurz/ms_demo:latest mrckurz/demo:$GIT_SHA
+  - docker push mrckurz/ms_demo:latest
+  - docker push mrckurz/ms_demo:$GIT_SHA
