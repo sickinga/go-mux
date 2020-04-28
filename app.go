@@ -33,6 +33,8 @@ func (a *App) Initialize(user, password, dbname string) {
 	a.Router = mux.NewRouter()
 
 	a.initializeRoutes()
+
+	fmt.Printf("user=%s password=%s dbname=%s sslmode=disable\n", user, password, dbname)
 }
 
 func (a *App) Run(addr string) {
