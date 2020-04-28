@@ -1,4 +1,4 @@
-# go-mux: Micorservice in GoTutorial
+# go-mux: Microservice in GoTutorial
 
 - Tutorial from [semaphoreci.com](https://semaphoreci.com/community/tutorials/building-and-testing-a-rest-api-in-go-with-gorilla-mux-and-postgresql)
 
