@@ -34,7 +34,7 @@ func (a *App) Initialize(user, password, dbname string) {
 
 	a.initializeRoutes()
 
-	fmt.Printf("++DB Credentials: user=%s password=%s dbname=%s sslmode=disable\n", user, password, dbname)
+	//fmt.Printf("++DB Credentials: user=%s password=%s dbname=%s sslmode=disable\n", user, password, dbname)
 }
 
 func (a *App) Run(addr string) {
