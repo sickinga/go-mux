@@ -3,6 +3,8 @@
 package main
 
 import (
+	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"testing"
@@ -115,6 +117,10 @@ func TestCreateProduct(t *testing.T) {
 	if m["id"] != 1.0 {
 		t.Errorf("Expected product ID to be '1'. Got '%v'", m["id"])
 	}
+
+	body, _ := ioutil.ReadAll(response.Body)
+	fmt.Print("\t" + string(body) + "\n")
+
 }
 
 func TestGetProduct(t *testing.T) {
@@ -123,6 +129,9 @@ func TestGetProduct(t *testing.T) {
 
 	req, _ := http.NewRequest("GET", "/product/1", nil)
 	response := executeRequest(req)
+
+	body, _ := ioutil.ReadAll(response.Body)
+	fmt.Print("\t" + string(body) + "\n")
 
 	checkResponseCode(t, http.StatusOK, response.Code)
 }
@@ -171,6 +180,9 @@ func TestUpdateProduct(t *testing.T) {
 	if m["price"] == originalProduct["price"] {
 		t.Errorf("Expected the price to change from '%v' to '%v'. Got '%v'", originalProduct["price"], m["price"], m["price"])
 	}
+
+	body, _ := ioutil.ReadAll(response.Body)
+	fmt.Print("\t" + string(body) + "\n")
 }
 
 func TestDeleteProduct(t *testing.T) {
@@ -183,6 +195,9 @@ func TestDeleteProduct(t *testing.T) {
 
 	req, _ = http.NewRequest("DELETE", "/product/1", nil)
 	response = executeRequest(req)
+
+	body, _ := ioutil.ReadAll(response.Body)
+	fmt.Print("\t" + string(body) + "\n")
 
 	checkResponseCode(t, http.StatusOK, response.Code)
 
