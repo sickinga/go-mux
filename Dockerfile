@@ -1,8 +1,14 @@
 # Pull in the layer of the base image: alpine:3.10.3
-FROM alpine:3.10.3
+FROM golang:1.11-alpine
 
-# Copy binary demo to the folder `/bin/`
-COPY ms_demo /bin/ms_demo
+LABEL maintainer='marc.kurz@fh-hagenberg.at'
 
-# Run the service demo when a container is launched
-CMD ["/bin/ms_demo"]
+WORKDIR /src
+
+COPY *.go go.* ./
+
+RUN CGO_ENABLED=0 go build -o /usr/myappmain
+
+EXPOSE 8010
+
+CMD ["/usr/myappmain"]
