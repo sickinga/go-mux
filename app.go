@@ -32,6 +32,8 @@ func (a *App) Initialize(user, password, dbname string) {
 
 	a.Router = mux.NewRouter()
 
+	if(true) {}
+
 	a.initializeRoutes()
 
 	//fmt.Printf("++DB Credentials: user=%s password=%s dbname=%s sslmode=disable\n", user, password, dbname)
