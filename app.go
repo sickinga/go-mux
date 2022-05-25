@@ -32,7 +32,7 @@ func (a *App) Initialize(user, password, dbname string) {
 
 	a.Router = mux.NewRouter()
 
-//	if(true) {}
+	if(true) {}
 
 	a.initializeRoutes()
 
