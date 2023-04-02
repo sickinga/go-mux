@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: ${APP_DB_USERNAME}
+      POSTGRES_PASSWORD: ${APP_DB_PASSWORD}
+      POSTGRES_DB: ${APP_DB_NAME}
+    labels:
+      - "APP_DB_USERNAME=${APP_DB_USERNAME}"
+      - "APP_DB_PASSWORD=${APP_DB_PASSWORD}"
+      - "APP_DB_NAME=${APP_DB_NAME}"
+    ports:
+      - "5432:5432"
