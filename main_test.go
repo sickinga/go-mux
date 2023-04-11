@@ -185,6 +185,33 @@ func TestUpdateProduct(t *testing.T) {
 	fmt.Print("\t" + string(body) + "\n")
 }
 
+func TestGetProductsByPrice(t *testing.T) {
+	clearTable()
+	addProducts(2)
+
+	req, _ := http.NewRequest("GET", "/products/price?priceMax=15", nil)
+	response := executeRequest(req)
+	checkResponseCode(t, http.StatusOK, response.Code)
+
+	var m []map[string]interface{}
+	json.Unmarshal(response.Body.Bytes(), &m)
+
+	if len(m) != 1 {
+		t.Errorf("Expected one product. Got %d", len(m))
+	}
+
+	if m[0]["name"] != "0" {
+		t.Errorf("Expected product name to be '0'. Got '%v'", m[0]["name"])
+	}
+
+	if m[0]["price"] != 10.0 {
+		t.Errorf("Expected product price to be '10.0'. Got '%v'", m[0]["price"])
+	}
+
+	body, _ := ioutil.ReadAll(response.Body)
+	fmt.Print("\t" + string(body) + "\n")
+}
+
 func TestDeleteProduct(t *testing.T) {
 	clearTable()
 	addProducts(1)

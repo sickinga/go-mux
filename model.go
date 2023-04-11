@@ -43,10 +43,10 @@ func (p *product) createProduct(db *sql.DB) error {
 	return nil
 }
 
-func getProducts(db *sql.DB, start, count int) ([]product, error) {
+func getProducts(db *sql.DB, start, count int, orderDir string) ([]product, error) {
 	rows, err := db.Query(
-		"SELECT id, name,  price FROM products LIMIT $1 OFFSET $2",
-		count, start)
+		"SELECT id, name,  price FROM products ORDER BY name $1 LIMIT $2 OFFSET $3",
+		orderDir, count, start)
 
 	if err != nil {
 		return nil, err
@@ -65,4 +65,29 @@ func getProducts(db *sql.DB, start, count int) ([]product, error) {
 	}
 
 	return products, nil
+}
+
+func getProductsByPrice(db *sql.DB, start, count int, orderDir string, priceMin int, priceMax int) ([]product, error) {
+	rows, err := db.Query(
+		"SELECT id, name,  price FROM products WHERE price >= $1 AND price <= $2 ORDER BY name $3 LIMIT $4 OFFSET $5",
+		priceMin, priceMax, orderDir, count, start)
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+
+	products := []product{}
+
+	for rows.Next() {
+		var p product
+		if err := rows.Scan(&p.ID, &p.Name, &p.Price); err != nil {
+			return nil, err
+		}
+		products = append(products, p)
+	}
+
+	return products, nil
+
 }
