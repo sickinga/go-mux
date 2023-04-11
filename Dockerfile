@@ -7,6 +7,8 @@ WORKDIR /src
 
 COPY *.go go.* ./
 
+RUN apk update && apk add git
+
 RUN CGO_ENABLED=0 go build -o /usr/myappmain
 
 EXPOSE 8010
