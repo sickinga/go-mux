@@ -3,7 +3,7 @@ Travis-CI Build Status: [![Build Status](https://app.travis-ci.com/sickinga/go-m
 # go-mux: Microservice in GoTutorial
 
 - Tutorial from [semaphoreci.com](https://semaphoreci.com/community/tutorials/building-and-testing-a-rest-api-in-go-with-gorilla-mux-and-postgresql)
-
+ 
 ## Prerequisites:
 1. [GitHub Account](https://github.com)
 2. PostgreSql installed and configured ([see Tutorial](https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb))
