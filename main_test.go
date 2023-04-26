@@ -21,7 +21,7 @@ var a App
 func TestMain(m *testing.M) {
 	a.Initialize(
 		"postgres", //os.Getenv("APP_DB_USERNAME"),
-		"",         //os.Getenv("APP_DB_PASSWORD"),
+		"admin",    //os.Getenv("APP_DB_PASSWORD"),
 		"postgres") //os.Getenv("APP_DB_NAME"))
 
 	ensureTableExists()
@@ -200,11 +200,11 @@ func TestGetProductsByPrice(t *testing.T) {
 		t.Errorf("Expected one product. Got %d", len(m))
 	}
 
-	if m[0]["name"] != "0" {
+	if len(m) > 0 && m[0]["name"] != "Product 0" {
 		t.Errorf("Expected product name to be '0'. Got '%v'", m[0]["name"])
 	}
 
-	if m[0]["price"] != 10.0 {
+	if len(m) > 0 && m[0]["price"] != 10.0 {
 		t.Errorf("Expected product price to be '10.0'. Got '%v'", m[0]["price"])
 	}
 
