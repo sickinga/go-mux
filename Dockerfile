@@ -7,12 +7,6 @@ WORKDIR /src
 
 COPY *.go go.* ./
 
-RUN apk update && \
-    apk add git && \
-    apk add build-base && \
-    apk add --no-cache curl && \
-    go get -v -u github.com/stretchr/testify && \
-    CGO_ENABLED=0 go build -o /usr/myappmain
 
 EXPOSE 8010
 
