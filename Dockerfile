@@ -7,7 +7,6 @@ WORKDIR /src
 
 COPY *.go go.* ./
 
-
 EXPOSE 8010
 
 CMD ["/usr/myappmain"]
