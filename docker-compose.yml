@@ -5,11 +5,11 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
+      POSTGRES_PASSWORD: 
       POSTGRES_DB: postgres
     labels:
       - "APP_DB_USERNAME=postgres"
-      - "APP_DB_PASSWORD=admin"
+      - "APP_DB_PASSWORD="
       - "APP_DB_NAME=postgres"
     ports:
       - "5432:5432"

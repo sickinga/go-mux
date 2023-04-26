@@ -6,7 +6,7 @@ func main() {
 	a := App{}
 	a.Initialize(
 		"postgres",
-		"admin",
+		"",
 		"postgres")
 
 	//export APP_DB_USERNAME=postgres
